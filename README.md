@@ -1,6 +1,6 @@
 # Encode_and_QRCode
 
-Two Module are needed: qrcode & PIL
+Two modules are needed: qrcode & PIL
 
 batch may be needed:
 pip install pillow
