@@ -3,8 +3,8 @@
 Two modules are needed: qrcode & PIL
 
 batch may be needed:
-pip install pillow
-pip install qrcode[pil]
+  pip install pillow
+  pip install qrcode[pil]
 
 
 Unfortunately, though this script works well when call "python encode.py" in Powershell,
