@@ -8,6 +8,7 @@ import base64
 import qrcode
 from PIL import Image
 
+#以下函数依次实现 SHA256编码, BASE64解码, BASE64编码, 从字串生成qr码
 def SHA256_EN(s):
 	"""encode string in SHA256 with hashlib module."""
 	EN = hashlib.sha256()
@@ -49,6 +50,7 @@ print("""
 		
 	(choose from: 1 / 2 / 3 / 4 )""")
 
+#以下部分进行输入及简单校验
 choice = input("> ")
 
 while choice not in ['1', '2', '3', '4']:
