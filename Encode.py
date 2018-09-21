@@ -8,7 +8,6 @@ import base64
 import qrcode
 from PIL import Image
 
-
 def SHA256_EN(s):
 	"""encode string in SHA256 with hashlib module."""
 	EN = hashlib.sha256()
@@ -33,7 +32,7 @@ def QRCode_EN(s):
 	   with module 'qrcode 6.0' from : https://pypi.org/project/qrcode/ """
 	img = qrcode.make(s)
 	print('Generating the image in default parameters...')
-	print('And this QR Code will be saved in current path.')
+	print('And this QR Code will be saved in current path.\n')
 	print('The image will be loaded with your default image application...')
 	img.save("QRCode.png")
 	img = Image.open("QRCode.png")
@@ -52,31 +51,39 @@ print("""
 
 choice = input("> ")
 
+while choice not in ['1', '2', '3', '4']:
+	print("Plz input a number from 1 to 4.")
+	choice = input("> ")
+
 print("And your string, a not-null string.")
 s = input("> ")
 
-while s.strip():
-	try:
-		if choice == '1':
-			print("You chose SHA256 Encoding.")
-			SHA256_EN(s)
-		elif choice == '2':
-			print("You chose BASE64 Decoding.")
-			BASE64_DE(s)
-		elif choice == '3':
-			print("You chose BASE64 Encoding.")
-			BASE64_EN(s)
-		elif choice == '4':
-			print("You chose to generate a QR code.")
-			QRCode_EN(s)
+while not s:
+	print("You should input something.")
+	s = input("> ")
 
-	except EOFError:
-		print("Terminated by input. Bye!")
+try:
+	if choice == '1':
+		print("You chose SHA256 Encoding.\n")
+		SHA256_EN(s)
+	elif choice == '2':
+		print("You chose BASE64 Decoding.\n")
+		BASE64_DE(s)
+	elif choice == '3':
+		print("You chose BASE64 Encoding.\n")
+		BASE64_EN(s)
+	elif choice == '4':
+		print("You chose to generate a QR code.\n")
+		QRCode_EN(s)
 
-	except:
-		print("Plz input a appropriate string, esp. when you hope your BASE64 string to be rightly decoded.")
-		print("Let's try again to get your STRING, or just input ctl-z to exit.")
-		s = input("> ")
-		
-	else:
-		print("Seems it worked well. Bye!")
+except EOFError:
+	print("Terminated by input. Bye!")
+	# this part seems doesn't work.
+
+except:
+	print("Plz input a appropriate string, esp. when you hope your BASE64 string to be rightly decoded.")
+	print("Let's try again to get your STRING, or just input ctl-z to exit.")
+	s = input("> ")
+	
+finally:
+	print("\nSeems it worked well. Bye!")
